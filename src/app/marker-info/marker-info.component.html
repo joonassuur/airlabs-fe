@@ -1,0 +1,26 @@
+<div class="flex flex-col gap-2" *ngIf="selectedAirport">
+  <div class="flex justify-between">
+    <span class="font-bold">Country Code:</span>
+    <span>{{ selectedAirport.country_code }}</span>
+  </div>
+  <div class="flex justify-between">
+    <span class="font-bold">IATA Code:</span>
+    <span>{{ selectedAirport.iata_code || "-" }}</span>
+  </div>
+  <div class="flex justify-between">
+    <span class="font-bold">ICAO Code:</span>
+    <span>{{ selectedAirport.icao_code }}</span>
+  </div>
+  <div class="flex justify-between">
+    <span class="font-bold">Latitude:</span>
+    <span>{{ selectedAirport.lat }}</span>
+  </div>
+  <div class="flex justify-between">
+    <span class="font-bold">Longitude:</span>
+    <span>{{ selectedAirport.lng }}</span>
+  </div>
+  <div class="flex justify-between">
+    <span class="font-bold">Name:</span>
+    <span>{{ selectedAirport.name }}</span>
+  </div>
+</div>

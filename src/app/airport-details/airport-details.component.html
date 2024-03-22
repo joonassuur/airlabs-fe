@@ -1,0 +1,31 @@
+<div class="container selectedAirport-details p-8 mx-auto">
+  <a routerLink="/" class="text-blue-500 hover:text-blue-700 font-bold">
+    Back to airports list
+  </a>
+  <div class="bg-white p-4 rounded-md shadow-md mt-8" *ngIf="selectedAirport">
+    <h3 class="text-lg font-semibold mb-2">{{ selectedAirport.name }}</h3>
+    <ul class="space-y-2">
+      <li class="flex items-center">
+        <span class="w-32 font-semibold">Country Code:</span>
+        <span>{{ selectedAirport.country_code }}</span>
+      </li>
+      <li class="flex items-center">
+        <span class="w-32 font-semibold">IATA Code:</span>
+        <span>{{ selectedAirport.iata_code }}</span>
+      </li>
+      <li class="flex items-center">
+        <span class="w-32 font-semibold">ICAO Code:</span>
+        <span>{{ selectedAirport.icao_code }}</span>
+      </li>
+      <li class="flex items-center">
+        <span class="w-32 font-semibold">Latitude:</span>
+        <span>{{ selectedAirport.lat }}</span>
+      </li>
+      <li class="flex items-center">
+        <span class="w-32 font-semibold">Longitude:</span>
+        <span>{{ selectedAirport.lng }}</span>
+      </li>
+    </ul>
+  </div>
+  <app-schedule></app-schedule>
+</div>

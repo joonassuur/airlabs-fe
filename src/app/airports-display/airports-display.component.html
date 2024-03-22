@@ -1,0 +1,85 @@
+<main class="container mx-auto p-8 h-screen flex flex-col">
+  <h2 class="text-2xl font-bold mb-4">Airports in Norway</h2>
+  <div class="mt-8 airports-list flex-1 overflow-y-auto">
+    <div
+      class="rounded-lg p-4 mb-4 shadow-sm bg-white"
+      *ngFor="let airport of airports.slice(startIndex, endIndex)"
+    >
+      <div class="mb-2">
+        <h1 class="text-blue-500 hover:text-blue-700 font-bold text-lg">
+          <a
+            [routerLink]="[
+              '/airport',
+              airport.iata_code ? airport.iata_code : airport.icao_code
+            ]"
+            [queryParams]="{
+              iata_code: airport.iata_code,
+              icao_code: airport.icao_code
+            }"
+          >
+            {{ airport.name }}
+          </a>
+        </h1>
+        <span *ngIf="airport.city">{{ airport.city }},</span>
+      </div>
+      <div class="flex items-center">
+        <div
+          *ngIf="airport.iata_code"
+          class="bg-green-500 text-white rounded-md px-2 py-1 mr-2 font-bold"
+        >
+          {{ airport.iata_code }}
+        </div>
+        <div class="bg-blue-500 text-white rounded-md px-2 py-1 mr-2 font-bold">
+          {{ airport.icao_code }}
+        </div>
+      </div>
+      <div class="mt-2">
+        <p v-if="airport.is_major" class="text-green-500">Major Airport</p>
+        <p v-if="airport.is_international" class="text-blue-500">
+          International Flights
+        </p>
+        <div class="flex mt-2">
+          <a
+            class="text-blue-500 underline cursor-pointer"
+            target="_blank"
+            *ngIf="airport.website"
+            [href]="airport.website"
+          >
+            <ng-icon name="featherLink"></ng-icon>
+          </a>
+          <a
+            class="text-blue-500 underline cursor-pointer ml-2 mr-2"
+            *ngIf="airport.instagram"
+            target="_blank"
+            [href]="airport.instagram"
+            ><ng-icon name="featherInstagram"></ng-icon
+          ></a>
+          <a
+            class="text-blue-500 underline cursor-pointer"
+            target="_blank"
+            *ngIf="airport.twitter"
+            [href]="airport.twitter"
+            ><ng-icon name="featherTwitter"></ng-icon
+          ></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="totalPages > 1" class="flex items-center mt-8">
+    <button
+      (click)="prevPage()"
+      [disabled]="currentPage === 1"
+      class="px-4 py-2 bg-gray-200 text-gray-800 rounded-md mr-4 font-bold"
+    >
+      Previous
+    </button>
+    Page {{ currentPage }} of {{ totalPages }}
+    <button
+      (click)="nextPage()"
+      [disabled]="currentPage === totalPages"
+      class="px-4 py-2 bg-gray-200 text-gray-800 rounded-md ml-4 font-bold"
+    >
+      Next
+    </button>
+  </div>
+</main>

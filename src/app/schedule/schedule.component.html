@@ -1,0 +1,45 @@
+<div *ngIf="sortedNextDepartures.length; else loadingTemplate" class="pt-8">
+  <h2 class="text-xl font-bold mb-4">Next 5 Departures</h2>
+  <table class="w-full table-auto">
+    <thead>
+      <tr class="bg-gray-200">
+        <th class="px-4 py-2 text-left">Time</th>
+        <th class="px-4 py-2 text-left">Carrier</th>
+        <th class="px-4 py-2 text-left">Flight</th>
+        <th class="px-4 py-2 text-left">Destination</th>
+        <th class="px-4 py-2 text-left">Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        *ngFor="let departure of sortedNextDepartures"
+        class="{{ getStatusColor(departure.status) }}"
+      >
+        <td class="border px-4 py-2">{{ departure.dep_time }}</td>
+        <td class="border px-4 py-2">{{ departure.airline_iata }}</td>
+        <td class="border px-4 py-2">{{ departure.flight_number }}</td>
+        <td class="border px-4 py-2">{{ departure.arr_iata }}</td>
+        <td class="border px-4 py-2">{{ departure.status }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Loader template -->
+<ng-template #loadingTemplate>
+  <div *ngIf="loading" class="pt-8">
+    <div class="bg-gray-200 p-4 rounded-md shadow-md">
+      <p class="text-lg font-semibold text-center text-gray-600">
+        Loading flights...
+      </p>
+    </div>
+  </div>
+</ng-template>
+
+<div *ngIf="!loading && !sortedNextDepartures.length" class="pt-8">
+  <div class="bg-gray-200 p-4 rounded-md shadow-md">
+    <p class="text-lg font-semibold text-center text-gray-600">
+      No flights found
+    </p>
+  </div>
+</div>
