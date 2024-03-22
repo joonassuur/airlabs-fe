@@ -21,7 +21,7 @@
         class="{{ getStatusColor(departure.status) }}"
       >
         <td class="border px-4 py-2">
-          {{ departure.dep_time | date : "medium" }}
+          {{ departure.dep_time | date : "MMM d, y, HH:mm" }}
         </td>
         <td class="border px-4 py-2">{{ departure.airline_iata }}</td>
         <td class="border px-4 py-2">{{ departure.flight_number }}</td>
