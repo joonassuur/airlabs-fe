@@ -1,6 +1,8 @@
 <google-map
   width="100%"
   [zoom]="zoom"
+  role="application"
+  aria-label="Map with airports"
   height="100vh"
   [center]="
     selectedAirport
@@ -9,12 +11,18 @@
   "
 >
   <map-marker
+    role="button"
+    [attr.aria-label]="airport.name + ' marker'"
     *ngFor="let airport of airports"
     [position]="{ lat: airport.lat, lng: airport.lng }"
     (mapClick)="openInfoWindow(marker, airport)"
     #marker="mapMarker"
   ></map-marker>
-  <map-info-window [position]="selectedAirportPosition || { lat: 0, lng: 0 }">
+  <map-info-window
+    role="dialog"
+    aria-label="Airport information"
+    [position]="selectedAirportPosition || { lat: 0, lng: 0 }"
+  >
     <div *ngIf="selectedAirport">
       <h3 class="font-bold mb-1">
         <a

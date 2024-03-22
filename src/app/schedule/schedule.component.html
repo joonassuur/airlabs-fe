@@ -1,4 +1,9 @@
-<div *ngIf="sortedNextDepartures.length; else loadingTemplate" class="pt-8">
+<div
+  role="region"
+  aria-label="Next 5 Departures"
+  *ngIf="sortedNextDepartures.length; else loadingTemplate"
+  class="pt-8"
+>
   <h2 class="text-xl font-bold mb-4">Next 5 Departures</h2>
   <table class="w-full table-auto">
     <thead>
@@ -27,7 +32,7 @@
 
 <!-- Loader template -->
 <ng-template #loadingTemplate>
-  <div *ngIf="loading" class="pt-8">
+  <div *ngIf="loading" class="pt-8" aria-label="Loading flights">
     <div class="bg-gray-200 p-4 rounded-md shadow-md">
       <p class="text-lg font-semibold text-center text-gray-600">
         Loading flights...
@@ -36,7 +41,11 @@
   </div>
 </ng-template>
 
-<div *ngIf="!loading && !sortedNextDepartures.length" class="pt-8">
+<div
+  *ngIf="!loading && !sortedNextDepartures.length"
+  class="pt-8"
+  aria-label="No flights found"
+>
   <div class="bg-gray-200 p-4 rounded-md shadow-md">
     <p class="text-lg font-semibold text-center text-gray-600">
       No flights found

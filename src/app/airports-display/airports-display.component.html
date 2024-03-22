@@ -2,12 +2,14 @@
   <h2 class="text-2xl font-bold mb-4">Airports in Norway</h2>
   <div class="mt-8 airports-list flex-1 overflow-y-auto">
     <div
+      role="listitem"
       class="rounded-lg p-4 mb-4 shadow-sm bg-white"
       *ngFor="let airport of airports.slice(startIndex, endIndex)"
     >
       <div class="mb-2">
         <h1 class="text-blue-500 hover:text-blue-700 font-bold text-lg">
           <a
+            tabindex="0"
             [routerLink]="[
               '/airport',
               airport.iata_code ? airport.iata_code : airport.icao_code
@@ -25,11 +27,15 @@
       <div class="flex items-center">
         <div
           *ngIf="airport.iata_code"
+          aria-label="IATA Code"
           class="bg-green-500 text-white rounded-md px-2 py-1 mr-2 font-bold"
         >
           {{ airport.iata_code }}
         </div>
-        <div class="bg-blue-500 text-white rounded-md px-2 py-1 mr-2 font-bold">
+        <div
+          aria-label="ICAO Code"
+          class="bg-blue-500 text-white rounded-md px-2 py-1 mr-2 font-bold"
+        >
           {{ airport.icao_code }}
         </div>
       </div>
@@ -44,6 +50,7 @@
             target="_blank"
             *ngIf="airport.website"
             [href]="airport.website"
+            aria-label="Website"
           >
             <ng-icon name="featherLink"></ng-icon>
           </a>
@@ -52,6 +59,7 @@
             *ngIf="airport.instagram"
             target="_blank"
             [href]="airport.instagram"
+            aria-label="Instagram"
             ><ng-icon name="featherInstagram"></ng-icon
           ></a>
           <a
@@ -59,6 +67,7 @@
             target="_blank"
             *ngIf="airport.twitter"
             [href]="airport.twitter"
+            aria-label="Twitter"
             ><ng-icon name="featherTwitter"></ng-icon
           ></a>
         </div>
@@ -70,6 +79,7 @@
       (click)="prevPage()"
       [disabled]="currentPage === 1"
       class="px-4 py-2 bg-gray-200 text-gray-800 rounded-md mr-4 font-bold"
+      aria-label="Previous Page"
     >
       Previous
     </button>
@@ -78,6 +88,7 @@
       (click)="nextPage()"
       [disabled]="currentPage === totalPages"
       class="px-4 py-2 bg-gray-200 text-gray-800 rounded-md ml-4 font-bold"
+      aria-label="Next Page"
     >
       Next
     </button>
