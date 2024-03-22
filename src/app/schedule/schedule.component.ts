@@ -4,12 +4,13 @@ import { NextDeparturesService } from '../next-departures.service';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { Flight, Status } from '../types';
+import { LoadingComponent } from '../loading/loading.component';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-schedule',
   standalone: true,
-  imports: [HttpClientModule, CommonModule],
+  imports: [HttpClientModule, CommonModule, LoadingComponent],
   templateUrl: './schedule.component.html',
   styleUrl: './schedule.component.scss',
 })
