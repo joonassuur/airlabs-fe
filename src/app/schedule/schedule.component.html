@@ -9,10 +9,10 @@
     <thead>
       <tr class="bg-gray-200">
         <th class="px-4 py-2 text-left">Time</th>
-        <th class="px-4 py-2 text-left">Carrier</th>
+        <th class="px-4 py-2 text-left hidden md:table-cell">Carrier</th>
         <th class="px-4 py-2 text-left">Flight</th>
         <th class="px-4 py-2 text-left">Destination</th>
-        <th class="px-4 py-2 text-left">Status</th>
+        <th class="px-4 py-2 text-left hidden md:table-cell">Status</th>
       </tr>
     </thead>
     <tbody>
@@ -24,9 +24,13 @@
           {{ departure.dep_time | date : "MMM d, y, HH:mm" }}
         </td>
         <td class="border px-4 py-2">{{ departure.airline_iata }}</td>
-        <td class="border px-4 py-2">{{ departure.flight_number }}</td>
+        <td class="border px-4 py-2 hidden md:table-cell">
+          {{ departure.flight_number }}
+        </td>
         <td class="border px-4 py-2">{{ departure.arr_iata }}</td>
-        <td class="border px-4 py-2">{{ departure.status }}</td>
+        <td class="border px-4 py-2 hidden md:table-cell">
+          {{ departure.status }}
+        </td>
       </tr>
     </tbody>
   </table>
