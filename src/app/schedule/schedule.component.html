@@ -20,7 +20,9 @@
         *ngFor="let departure of sortedNextDepartures"
         class="{{ getStatusColor(departure.status) }}"
       >
-        <td class="border px-4 py-2">{{ departure.dep_time }}</td>
+        <td class="border px-4 py-2">
+          {{ departure.dep_time | date : "medium" }}
+        </td>
         <td class="border px-4 py-2">{{ departure.airline_iata }}</td>
         <td class="border px-4 py-2">{{ departure.flight_number }}</td>
         <td class="border px-4 py-2">{{ departure.arr_iata }}</td>
